@@ -1,7 +1,8 @@
 const accountService = require('../service/account.manager.service');
 const AccountRequest = require('../model/account.request.model');
 
-async function accountController(fastify, opts) {
+async function accountController(fastify) {
+    // Register Route
     fastify.post('/register', async (request, reply) => {
         const {username, email, password} = request.body;
         const accountRequest = new AccountRequest(username, email, password);
