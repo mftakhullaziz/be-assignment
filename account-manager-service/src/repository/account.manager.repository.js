@@ -17,8 +17,8 @@ class AccountRepository {
         return prisma.paymentAccount.create({ data });
     }
 
-    async findAccountsByUserId(userId) {
-        return prisma.paymentAccount.findMany({ where: { userId } });
+    async findAccountsByUserId(id) {
+        return prisma.user.findUnique({ where: { id } });
     }
 }
 

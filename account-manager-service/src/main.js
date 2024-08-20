@@ -1,5 +1,11 @@
+// require('dotenv').config();
 const fastify = require('fastify')({ logger: true });
 const accountController = require('./controller/account.manager.controller');
+
+// Register the @fastify/jwt plugin with a secret key
+fastify.register(require('@fastify/jwt'), {
+    secret: process.env.JWT_SECRET_KEY
+});
 
 // Register routes
 fastify.register(accountController);
@@ -15,4 +21,4 @@ const start = async () => {
     }
 };
 
-start().then(r => console.log(r));
+start();
